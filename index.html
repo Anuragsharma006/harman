@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Best Friend?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Floating Hearts */
+    .hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .hearts span {
+      position: absolute;
+      display: block;
+      width: 40px; /* Bigger hearts */
+      height: 40px; /* Bigger hearts */
+      background: url('https://emojicdn.elk.sh/❤') no-repeat center center/contain;
+      animation: float 10s linear infinite;
+      bottom: -150px;
+    }
+
+    .hearts span.white-heart {
+      background: url('https://emojicdn.elk.sh/🤍') no-repeat center center/contain; /* White heart */
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff6f61;
+    }
+
+    #name {
+      color: #ff6f61;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background: #ff6f61;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      background: #ff3b2f;
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: #ddd;
+      color: #333;
+    }
+
+    #noBtn:hover {
+      background: #ccc;
+      transform: scale(1.1);
+    }
+
+    /* New Slide Styles */
+    .appreciation-slide,
+    .confirmation-slide,
+    .video-call-slide {
+      display: none;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .appreciation-slide h1,
+    .confirmation-slide h1,
+    .video-call-slide h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff6f61;
+    }
+
+    .appreciation-slide p,
+    .confirmation-slide p,
+    .video-call-slide p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    /* Smaller Roses */
+    .roses {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .roses img {
+      width: 60px; /* Smaller roses */
+      animation: floatRose 3s ease-in-out infinite;
+    }
+
+    @keyframes floatRose {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Video Call Button */
+    #videoCallBtn {
+      background: #4CAF50;
+      color: white;
+    }
+
+    #videoCallBtn:hover {
+      background: #45a049;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Hearts -->
+  <div class="hearts">
+    <span></span>
+    <span class="white-heart"></span>
+    <span></span>
+    <span class="white-heart"></span>
+    <span></span>
+    <span class="white-heart"></span>
+    <span></span>
+    <span class="white-heart"></span>
+    <span></span>
+    <span class="white-heart"></span>
+  </div>
+
+  <!-- First Slide -->
+  <div class="container" id="mainSlide">
+    <h1>Hey <span id="name">Harman</span>,</h1>
+    <p class="message">
+      I’ve been thinking… you’re such an amazing person, and I really enjoy spending time with you. Would you like to be my best friend? 😊
+    </p>
+    <div class="buttons">
+      <button id="yesBtn">Yes, of course!</button>
+      <button id="noBtn">Umm… let me think</button>
+    </div>
+  </div>
+
+  <!-- Appreciation Slide -->
+  <div class="container appreciation-slide" id="appreciationSlide">
+    <h1>Yay! You’re the Best! 😊</h1>
+    <p>
+      I’m so happy you said yes, Harman! You mean a lot to me, and I can’t wait to create unforgettable memories together. Let’s make this friendship the best ever! 💖
+    </p>
+    <div class="roses">
+      <img src="https://emojicdn.elk.sh/🌹" alt="Rose">
+      <img src="https://emojicdn.elk.sh/🌹" alt="Rose">
+      <img src="https://emojicdn.elk.sh/🌹" alt="Rose">
+    </div>
+    <div class="buttons">
+      <button id="nextPageBtn">Next Page</button>
+    </div>
+  </div>
+
+  <!-- Video Call Slide -->
+  <div class="container video-call-slide" id="videoCallSlide">
+    <h1>Let’s Celebrate! 🎉</h1>
+    <p>
+      I’m so excited to be your best friend! How about we celebrate this with a video call? Click the button below to call me, and let’s chat! 📞
+    </p>
+    <div class="buttons">
+      <button id="videoCallBtn">Video Call Me</button>
+    </div>
+  </div>
+
+  <!-- Confirmation Slide -->
+  <div class="container confirmation-slide" id="confirmationSlide">
+    <h1>Are You Sure? 😢</h1>
+    <p>
+      I really value our connection, Harman. Are you sure you don’t want to be friends? I’d love to have you in my life.
+    </p>
+    <div class="buttons">
+      <button id="confirmNoBtn">Yes, I’m sure</button>
+      <button id="goBackBtn">Go Back</button>
+    </div>
+  </div>
+
+  <script>
+    // Get elements
+    const mainSlide = document.getElementById("mainSlide");
+    const appreciationSlide = document.getElementById("appreciationSlide");
+    const videoCallSlide = document.getElementById("videoCallSlide");
+    const confirmationSlide = document.getElementById("confirmationSlide");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const nextPageBtn = document.getElementById("nextPageBtn");
+    const videoCallBtn = document.getElementById("videoCallBtn");
+    const confirmNoBtn = document.getElementById("confirmNoBtn");
+    const goBackBtn = document.getElementById("goBackBtn");
+
+    // If she clicks "Yes"
+    yesBtn.addEventListener("click", function () {
+      mainSlide.style.display = "none"; // Hide the main slide
+      appreciationSlide.style.display = "block"; // Show the appreciation slide
+    });
+
+    // If she clicks "Next Page"
+    nextPageBtn.addEventListener("click", function () {
+      appreciationSlide.style.display = "none"; // Hide the appreciation slide
+      videoCallSlide.style.display = "block"; // Show the video call slide
+    });
+
+    // If she clicks "Video Call Me"
+    videoCallBtn.addEventListener("click", function () {
+      const whatsappUrl = "https://wa.me/7742781605"; // Replace with your WhatsApp number
+      window.open(whatsappUrl, "_blank");
+    });
+
+    // If she clicks "No"
+    noBtn.addEventListener("click", function () {
+      mainSlide.style.display = "none"; // Hide the main slide
+      confirmationSlide.style.display = "block"; // Show the confirmation slide
+    });
+
+    // If she confirms "No"
+    confirmNoBtn.addEventListener("click", function () {
+      alert("Take your time and think again. Let me know if you change your mind! 😊");
+    });
+
+    // If she clicks "Go Back"
+    goBackBtn.addEventListener("click", function () {
+      confirmationSlide.style.display = "none"; // Hide the confirmation slide
+      mainSlide.style.display = "block"; // Show the main slide
+    });
+
+    // Floating Hearts Animation
+    const heartsContainer = document.querySelector(".hearts");
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement("span");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+      if (i % 2 === 0) {
+        heart.classList.add("white-heart"); // Add white hearts
+      }
+      heartsContainer.appendChild(heart);
+    }
+  </script>
+</body>
+</html>
